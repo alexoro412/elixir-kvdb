@@ -4,9 +4,10 @@ defmodule KVDBServer.Application do
   def start(_type, _args) do
     children = [
       {Task.Supervisor, name: KVDBServer.TaskSupervisor},
-      Supervisor.child_spec(
-        {Task, fn -> KVDBServer.accept(4040) end},
-        restart: :permanent),
+      # Supervisor.child_spec(
+      #   {Task, fn -> KVDBServer.accept(4040) end},
+      #   restart: :permanent),
+      {KVDBServer, [:ok]},
       {KVDB.Database, name: KVDB.Database}
       # Turns into `Task.start_link(fn -> KVDBServer.accept(4040) end)`
     ]
