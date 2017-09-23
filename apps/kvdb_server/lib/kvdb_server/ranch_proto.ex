@@ -27,7 +27,6 @@ defmodule KVDBServer.RanchProto do
   end
 
   def init(ref, socket, transport) do
-
     :ok = :ranch.accept_ack(ref)
     :ok = transport.setopts(socket, [{:active, true}, {:packet, :line}])
     :gen_server.enter_loop(__MODULE__, [], %{socket: socket, transport: transport})

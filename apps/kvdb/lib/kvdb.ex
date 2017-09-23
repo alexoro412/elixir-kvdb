@@ -1,7 +1,7 @@
 defmodule KVDB do
   @moduledoc """
-  Documentation for KVDB.
+  Empty module
   """
 
-  
+
 end
