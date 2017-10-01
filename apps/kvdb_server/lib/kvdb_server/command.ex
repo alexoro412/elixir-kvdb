@@ -39,6 +39,18 @@ defmodule KVDBServer.Command do
     :ok
   end
 
+  def run({:ok, {:get, key}}) do
+    KVDB.Database.get(KVDB.Database, key)
+  end
+
+  def run({:ok, {:hget, map_key, key}}) do
+    KVDB.Database.hget(KVDB.Database, map_key, key)
+  end
+
+  def run({:ok, {:exists, keys}}) do
+    KVDB.Database.exists(KVDB.Database, keys)
+  end
+
   def run({:ok, cmd}) do
     GenServer.call(KVDB.Database, cmd, :infinity)
   end
