@@ -1,4 +1,5 @@
 defmodule KVDBServer.Command do
+	# import KVDB.Database
   require Logger
 
   def parse(line) do
